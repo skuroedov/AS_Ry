@@ -45,27 +45,34 @@
 	}
 ?>
 <form method="get">
-	<label for="number">X:</label>
-	<input type="number" name="x">
-	<label for="number">Y:</label>
-	<input type="number" name="y">
+	<label for="x-min">X-min:</label>
+	<input type="number" name="x-min" id="x-min">
+	<label for="x-max">X-min:</label>
+	<input type="number" name="x-min" id="x-max">
+	<label for="y-min">Y-min:</label>
+	<input type="number" name="y-min">
+	<label for="y-max">Y-max:</label>
+	<input type="number" name="y-max">
 	<input type="submit">
 </form>
 <table>
 	<?php
-		$x = $_GET['x'];
-		$y = $_GET['y'];
-		
-		for ($i = 0; $i <= $x; $i++) {
+		$x_min = $_GET['x-min'];
+		$y_min = $_GET['y-min'];
+
+		$x_max = $_GET['x-max'];
+		$y_max = $_GET['y-max'];
+
+		for ($i = 0; $i <= $x_max; $i++) {
 			echo('<td class="zelene">');
 			if ($i != 0)
 				echo($i);
 			echo('</td>');
 		}
-		for ($i = 1; $i <= $y; $i++) {
+		for ($i = 1; $i <= $y_max; $i++) {
 			echo('<tr>');
 			echo('<td class="zelene">' . $i . '</td>');
-			for ($j = 1; $j <= $x; $j++) {
+			for ($j = 1; $j <= $x_max; $j++) {
 				echo('<td>' . $i * $j . '</td>');
 			}
 		}
