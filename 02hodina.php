@@ -52,28 +52,37 @@
 			if(isset($_GET['submitKv'])){
 				if(isset($_GET['a']) && $_GET['a'] != 0) {
 					$a = $_GET['a'];
-					if(!isset($_GET['b']))
-						$b = 0;
-					else
-						$b = $_GET['b'];
-					if(!isset($_GET['c']))
-						$c = 0;
-					else
-						$c = $_GET['c'];
+
+					if(!isset($_GET['b'])) $b = 0;
+					else $b = $_GET['b'];
+
+					if(!isset($_GET['c'])) $c = 0;
+					else $c = $_GET['c'];
+
 					$D = $b*$b - (4 * $a * $c);
 					if($D >= 0) {
-						$x[0] = (- $b + sqrt($D)) / 2;
-						$x[1] = (- $b - sqrt($D)) / 2;
-
+						$x1 = (-1.0 * $b + sqrt($D)) / 2.0;
+						$x2 = floatval((floatval(-1) * floatval($b) - floatval(sqrt($D))) / floatval(2));
 						echo("<p>Výsledky:</p>");
-						echo("<p>x1: $x[0]</p>");
+						echo("<p>x1: $x1</p>");
 
-						if($x[0] != $x[1])
-							echo("<p>x2: $x[1]</p>");
-					} else
-						echo("Nechceme komplexní čísla.");
-				} else {
-					echo("a je povinné.");
+						if($x1 != $x2) echo("<p>x2: $x2</p>");
+					} else echo("Nechceme komplexní čísla.");
+				}
+				elseif($_GET['a'] == 0 && $_GET['b'] == 0 && $_GET['c'] == 0)
+					echo "Rovnice má nekonečně mnoho řešení";
+
+				elseif($_GET['b'] == 0 && $_GET['c'] != 0)
+					echo "Rovnice nemá řešení";
+				else {
+					$a = $_GET['a'];
+					if(!isset($_GET['b'])) $b = 0;
+					else $b = $_GET['b'];
+					if(!isset($_GET['c'])) $c = 0;
+					else $c = $_GET['c'];
+					$x = - $c / $b;
+					echo("<p>Výsledky:</p>");
+					echo("<p>x: $x</p>");
 				}
 			}
 		?>
