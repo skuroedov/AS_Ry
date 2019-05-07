@@ -52,7 +52,8 @@
 		</tr>
 		<tr>
 			<td>1 km</td>
-			<td><?= spotreba(1) ?></td>
+			<?php $spotreba = spotreba(1); ?>
+			<td><?=$spotreba?></td>
 			<td><?= $spotreba * $_GET['cena_paliva'] ?></td>
 		</tr>
 	</table>
